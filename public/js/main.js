@@ -245,5 +245,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialisation des deux comparateurs
 initImageCompare("compare", "slider", "topImage");
-initImageCompare("compare2", "slider2", "topImage2");
 initImageCompare("compare1", "slider1", "topImage1");
