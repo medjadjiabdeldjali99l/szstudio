@@ -145,53 +145,105 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  const container = document.getElementById("compare");
-  const slider = document.getElementById("slider");
-  const topImage = document.getElementById("topImage");
+  // const container = document.getElementById("compare");
+  // const slider = document.getElementById("slider");
+  // const topImage = document.getElementById("topImage");
   
+  // let isDragging = false;
+  
+  // // Fonction pour mettre à jour la position du slider et le changement d'image
+  // const updateSlider = (x) => {
+  //   const rect = container.getBoundingClientRect();
+  //   let offset = x - rect.left;
+  
+  //   // ici on limite pour que la barre ne sorte pas à gauche ou à droite
+  //   const halfSliderWidth = 15; // moitié de 20px (largeur de la barre)
+  //   offset = Math.max(halfSliderWidth, Math.min(offset, rect.width - halfSliderWidth));
+  
+  //   const percent = (offset / rect.width) * 100;
+  //   slider.style.left = `${percent}%`;
+  //   topImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+  // };
+  
+  // // Fonction pour démarrer le glissement
+  // const startDrag = (e) => {
+  //   isDragging = true;
+  //   const x = e.touches ? e.touches[0].clientX : e.clientX; // Obtenir la position de la souris ou du toucher
+  //   updateSlider(x);
+  // };
+  
+  // // Fonction pour arrêter le glissement
+  // const stopDrag = () => {
+  //   isDragging = false;
+  // };
+  
+  // // Fonction pour déplacer le slider
+  // const duringDrag = (e) => {
+  //   if (!isDragging) return; // Si on n'est pas en train de glisser, on ne fait rien
+  //   const x = e.touches ? e.touches[0].clientX : e.clientX; // Obtenir la position de la souris ou du toucher
+  //   updateSlider(x);
+  // };
+  
+  // // Ajouter les événements de démarrage et de mouvement de glissement
+  // slider.addEventListener("mousedown", startDrag);
+  // slider.addEventListener("touchstart", startDrag);
+  
+  // window.addEventListener("mousemove", duringDrag);
+  // window.addEventListener("touchmove", duringDrag);
+  
+  // window.addEventListener("mouseup", stopDrag);
+  // window.addEventListener("touchend", stopDrag);
+  
+
+
+
+
+  function initImageCompare(containerId, sliderId, topImageId) {
+  const container = document.getElementById(containerId);
+  const slider = document.getElementById(sliderId);
+  const topImage = document.getElementById(topImageId);
+
   let isDragging = false;
-  
-  // Fonction pour mettre à jour la position du slider et le changement d'image
+
   const updateSlider = (x) => {
     const rect = container.getBoundingClientRect();
     let offset = x - rect.left;
-  
-    // ici on limite pour que la barre ne sorte pas à gauche ou à droite
-    const halfSliderWidth = 15; // moitié de 20px (largeur de la barre)
+
+    const halfSliderWidth = 15;
     offset = Math.max(halfSliderWidth, Math.min(offset, rect.width - halfSliderWidth));
-  
+
     const percent = (offset / rect.width) * 100;
     slider.style.left = `${percent}%`;
     topImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
   };
-  
-  // Fonction pour démarrer le glissement
+
   const startDrag = (e) => {
     isDragging = true;
-    const x = e.touches ? e.touches[0].clientX : e.clientX; // Obtenir la position de la souris ou du toucher
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
     updateSlider(x);
   };
-  
-  // Fonction pour arrêter le glissement
+
   const stopDrag = () => {
     isDragging = false;
   };
-  
-  // Fonction pour déplacer le slider
+
   const duringDrag = (e) => {
-    if (!isDragging) return; // Si on n'est pas en train de glisser, on ne fait rien
-    const x = e.touches ? e.touches[0].clientX : e.clientX; // Obtenir la position de la souris ou du toucher
+    if (!isDragging) return;
+    const x = e.touches ? e.touches[0].clientX : e.clientX;
     updateSlider(x);
   };
-  
-  // Ajouter les événements de démarrage et de mouvement de glissement
+
   slider.addEventListener("mousedown", startDrag);
   slider.addEventListener("touchstart", startDrag);
-  
+
   window.addEventListener("mousemove", duringDrag);
   window.addEventListener("touchmove", duringDrag);
-  
-  // Ajouter les événements de fin de glissement
+
   window.addEventListener("mouseup", stopDrag);
   window.addEventListener("touchend", stopDrag);
-  
+}
+
+// Initialisation des deux comparateurs
+initImageCompare("compare", "slider", "topImage");
+initImageCompare("compare2", "slider2", "topImage2");
+initImageCompare("compare1", "slider1", "topImage1");

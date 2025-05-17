@@ -1495,8 +1495,6 @@ img {
     position: absolute;
     top: 50%;
     left: 50%;
-    right: 50%;
-    bottom: 50%;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
