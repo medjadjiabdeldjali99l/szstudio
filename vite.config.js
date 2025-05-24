@@ -29,6 +29,7 @@ export default defineConfig({
         'projet-6': resolve(__dirname, 'portfolio/projet-6.html'),
         'projet-7': resolve(__dirname, 'portfolio/projet-7.html'),
         'projet-8': resolve(__dirname, 'portfolio/projet-8.html'),
+        'projet-9': resolve(__dirname, 'portfolio/projet-9.html'),
       },
     },
   },
