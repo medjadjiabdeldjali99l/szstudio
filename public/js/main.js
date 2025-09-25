@@ -191,10 +191,63 @@ document.addEventListener("DOMContentLoaded", function () {
 // window.addEventListener("mouseup", stopDrag);
 // window.addEventListener("touchend", stopDrag);
 
+// function initImageCompare(containerId, sliderId, topImageId) {
+//   const container = document.getElementById(containerId);
+//   const slider = document.getElementById(sliderId);
+//   const topImage = document.getElementById(topImageId);
+
+//   let isDragging = false;
+
+//   const updateSlider = (x) => {
+//     const rect = container.getBoundingClientRect();
+//     let offset = x - rect.left;
+
+//     const halfSliderWidth = 15;
+//     offset = Math.max(
+//       halfSliderWidth,
+//       Math.min(offset, rect.width - halfSliderWidth)
+//     );
+
+//     const percent = (offset / rect.width) * 100;
+//     slider.style.left = `${percent}%`;
+//     topImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+//   };
+
+//   const startDrag = (e) => {
+//     isDragging = true;
+//     const x = e.touches ? e.touches[0].clientX : e.clientX;
+//     updateSlider(x);
+//   };
+
+//   const stopDrag = () => {
+//     isDragging = false;
+//   };
+
+//   const duringDrag = (e) => {
+//     if (!isDragging) return;
+//     const x = e.touches ? e.touches[0].clientX : e.clientX;
+//     updateSlider(x);
+//   };
+
+//   slider.addEventListener("mousedown", startDrag);
+//   slider.addEventListener("touchstart", startDrag);
+
+//   window.addEventListener("mousemove", duringDrag);
+//   window.addEventListener("touchmove", duringDrag);
+
+//   window.addEventListener("mouseup", stopDrag);
+//   window.addEventListener("touchend", stopDrag);
+// }
+
 function initImageCompare(containerId, sliderId, topImageId) {
   const container = document.getElementById(containerId);
   const slider = document.getElementById(sliderId);
   const topImage = document.getElementById(topImageId);
+
+  // 🔴 Si un élément est introuvable → on arrête
+  if (!container || !slider || !topImage) {
+    return;
+  }
 
   let isDragging = false;
 
