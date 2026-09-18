@@ -140,6 +140,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setInterval(animateHeroImages, 5000);
   }
+
+  // Contact form: phone number (05, 06 or 07 + 8 digits)
+  const phoneInput = document.querySelector('input[name="telephone"]');
+
+  if (phoneInput) {
+    phoneInput.addEventListener("input", function () {
+      let digits = this.value.replace(/\D/g, "");
+
+      // +213 / 00213 -> 0
+      if (digits.startsWith("00213")) digits = "0" + digits.slice(5);
+      else if (digits.startsWith("213")) digits = "0" + digits.slice(3);
+
+      digits = digits.slice(0, 10);
+      if (this.value !== digits) this.value = digits;
+    });
+  }
 });
 
 // const container = document.getElementById("compare");

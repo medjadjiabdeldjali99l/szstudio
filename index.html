@@ -282,11 +282,15 @@
               </div>
               <div class="mb-3">
                 <input
-                  type="email"
-                  name="email"
+                  type="tel"
+                  name="telephone"
                   class="form-control"
-                  placeholder="Email address"
+                  placeholder="Téléphone (ex : 0555123456)"
                   required
+                  inputmode="numeric"
+                  autocomplete="tel-national"
+                  pattern="0[567][0-9]{8}"
+                  title="Numéro à 10 chiffres commençant par 05, 06 ou 07"
                   data-form-input
                 />
               </div>
